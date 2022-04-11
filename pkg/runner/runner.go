@@ -6,6 +6,11 @@ import (
 	"github.com/kubeshop/testkube/pkg/executor/output"
 )
 
+type Runner interface {
+	// Run takes Execution data and returns execution result
+	Run(execution testkube.Execution) (result testkube.ExecutionResult, err error)
+}
+
 func NewRunner() *ExampleRunner {
 	return &ExampleRunner{
 		Fetcher: content.NewFetcher(),
